@@ -116,8 +116,8 @@ export class DatabaseService{
                 conf.appwriteBucketId,
                 fileId
             )
-             return true,
-        } catch(error){
+             return true
+        }catch(error){
             console.log("appwrite service::deletefile:: error",error);
             return false;
         }
