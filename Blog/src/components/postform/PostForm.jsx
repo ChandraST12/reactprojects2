@@ -1,6 +1,6 @@
 import React from 'react'
 import {useForm} from 'react-hook-form'
-import {Button } from '../index'
+import {Button,Select,Input } from '../index'
 import appwriteService from "../../appwrite/config"
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
@@ -45,26 +45,28 @@ function PostForm({post}) {
     
     }
   }
-  const slugTransform = useCallback((value) => {
-    if (value && typeof value === "string")
-        return value
-            .trim()
-            .toLowerCase()
-            .replace(/^[a-zA-Z\d\s]+/g, "-")
-            .replace(/\s/g, "-");
+}
+const slugTransform = useCallback((value) => {
+  if (value && typeof value === "string")
+      return value
+          .trim()
+          .toLowerCase()
+          .replace(/^[a-zA-Z\d\s]+/g, "-")
+          .replace(/\s/g, "-");
 
-    return "";
+  return "";
 }, []);
-React.useEffect(()=>{
-  const subscription = watch((value,{name})=>{
-    if(name==='title'){
-      setValue('slug',slugTransform(value.title,{shouldValidate:true}))
-    }
-  })
 
-  return ()=>{
-    subscription.unsubscribe()
+React.useEffect(()=>{
+const subscription = watch((value,{name})=>{
+  if(name==='title'){
+    setValue('slug',slugTransform(value.title,{shouldValidate:true}))
   }
+})
+
+return ()=>{
+  subscription.unsubscribe()
+}
 },[watch,slugTransform,setValue])
   
   return (
