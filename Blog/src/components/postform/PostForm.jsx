@@ -1,10 +1,10 @@
 import React from 'react'
 import {useForm} from 'react-hook-form'
-import {Button,Select,Input } from '../index'
+import {Button,Select,Input ,RTE } from '../index'
 import appwriteService from "../../appwrite/config"
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-
+import { useCallback } from 'react'
 
 function PostForm({post}) {
   const {register,handleSubmit,watch,setValue,control,getValues} =useForm({
