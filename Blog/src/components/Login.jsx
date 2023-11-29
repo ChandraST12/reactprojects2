@@ -23,7 +23,7 @@ const login = async(data) =>{
     }
     } catch (error) {
         setError(error.message)
-        console.log("error");
+        console.log("error in login ");
     }
 }
 

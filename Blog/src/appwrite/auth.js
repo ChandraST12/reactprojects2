@@ -1,5 +1,5 @@
-import {Client,Account, ID} from "appwrite"
-import conf from '../conf/conf.js'
+import {Client,Account, ID} from "appwrite";
+import conf from '../conf/conf.js';
 export class AuthService {
     client =new Client();
     account; 
@@ -18,7 +18,7 @@ export class AuthService {
             if(userAccount){
                 return this.login({email,password});
             }else{
-                return;
+                return userAccount;
             }
         }catch (error) {
             console.log("appwrite service::createAccount :: error",error);
